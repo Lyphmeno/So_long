@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ischarset.c                                     :+:      :+:    :+:   */
+/*   ft_is_not_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:27:45 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/22 21:24:15 by lyphmeno         ###   ########.fr       */
+/*   Created: 2021/07/22 21:06:17 by lyphmeno          #+#    #+#             */
+/*   Updated: 2021/07/22 21:24:38 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_charset(char c, char *charset)
+int	is_not_char(char *str, char c)
 {
 	int	i;
 
 	i = 0;
-	while (charset[i])
-		if (charset[i++] == c)
-			return (1);
+	while (str[i])
+		if (str[i++] != c)
+			return (-1);
 	return (0);
 }

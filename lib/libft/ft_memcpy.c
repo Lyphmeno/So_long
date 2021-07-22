@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ischarset.c                                     :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:27:45 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/22 21:24:15 by lyphmeno         ###   ########.fr       */
+/*   Created: 2021/07/22 20:42:13 by lyphmeno          #+#    #+#             */
+/*   Updated: 2021/07/22 20:46:10 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_charset(char c, char *charset)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	i;
+	size_t	i;
+	char	*dest;
+	char	*source;
 
 	i = 0;
-	while (charset[i])
-		if (charset[i++] == c)
-			return (1);
-	return (0);
+	if (dst || src)
+	{
+		dest = (char *)dst;
+		source = (char *)src;
+		while (i < n)
+		{
+			dest[i] = source[i];
+			i++;
+		}
+	}
+	return (dst);
 }
