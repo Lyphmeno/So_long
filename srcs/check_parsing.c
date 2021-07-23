@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 19:48:57 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/22 21:31:11 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/23 19:12:32 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ void	check_errors(t_map *map)
 {
 	if (map->error != 0)
 	{
+		printf("Error\n");
 		if (map->error == 1)
 			printf("Map isn't a rectangle\n");
 		if (map->error == 2)
 			printf("Map contains a character that isn't supposed to be\n");
 		if (map->error == 3)
 			printf("Wrong map entries\n");
-		if (map->error == 4)
-			printf("Map not surrounded by walls\n");
 		free (map->map);
 		free (map);
 		exit (0);
@@ -37,13 +36,25 @@ void	check_borders(t_map *map)
 	i = 0;
 	if (is_not_char(map->map[0], '1') == -1)
 		map->error = 4;
-	if (is_not_char(map->map[map->height - 1], '1') == -1)
-		map->error = 4;
+	if (!(ft_strlen(map->map[map->height - 1])))
+	{
+		if (is_not_char(map->map[map->height - 2], '1') == -1)
+			map->error = 4;
+	}
+	else
+		if (is_not_char(map->map[map->height - 1], '1') == -1)
+			map->error = 4;
 	while (i < map->height)
 	{
 		if (map->map[i][0] != '1' || map->map[i][map->width - 1] != '1')
 			map->error = 4;
 		i++;
+	}
+	if (map->error == 4)
+	{
+		free (map->map);
+		free (map);
+		exit(printf("Error\nMap not surrounded by walls\n"));
 	}
 }
 

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 20:42:13 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/23 16:24:29 by lyphmeno         ###   ########.fr       */
+/*   Created: 2021/07/23 19:03:53 by lyphmeno          #+#    #+#             */
+/*   Updated: 2021/07/23 19:11:09 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../lib/so_longlib.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	size_t	i;
-	char	*dest;
-	char	*source;
+	char	*dst;
 
-	i = 0;
-	if (dst || src)
-	{
-		dest = (char *)dst;
-		source = (char *)src;
-		while (i < n)
-		{
-			dest[i] = source[i];
-			i++;
-		}
-	}
-	return (dst);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 20:42:13 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/23 16:24:29 by lyphmeno         ###   ########.fr       */
+/*   Created: 2021/07/23 21:27:03 by lyphmeno          #+#    #+#             */
+/*   Updated: 2021/07/23 21:43:36 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../lib/so_longlib.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	init_map(t_map **map)
 {
-	size_t	i;
-	char	*dest;
-	char	*source;
+	*map = (t_map *)ft_calloc(sizeof(t_map), 1);
+	ft_memset(*map, 0, sizeof(*map));
+	if (*map == NULL)
+		exit(printf("Error\nInit error\n"));
+}
 
-	i = 0;
-	if (dst || src)
-	{
-		dest = (char *)dst;
-		source = (char *)src;
-		while (i < n)
-		{
-			dest[i] = source[i];
-			i++;
-		}
-	}
-	return (dst);
+void	init_data(t_data **data)
+{
+	*data = (t_data *)ft_calloc(sizeof(t_data), 1);
+	ft_memset(*data, 0, sizeof(*data));
+	if (*data == NULL)
+		exit(printf("Error\nInit error\n"));
 }
