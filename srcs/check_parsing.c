@@ -6,79 +6,77 @@
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 19:48:57 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/23 19:12:32 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/24 22:02:59 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/so_longlib.h"
 
-void	check_errors(t_map *map)
+void	check_errors(t_game *game)
 {
-	if (map->error != 0)
+	if (game->error != 0)
 	{
 		printf("Error\n");
-		if (map->error == 1)
+		if (game->error == 1)
 			printf("Map isn't a rectangle\n");
-		if (map->error == 2)
+		if (game->error == 2)
 			printf("Map contains a character that isn't supposed to be\n");
-		if (map->error == 3)
+		if (game->error == 3)
 			printf("Wrong map entries\n");
-		free (map->map);
-		free (map);
+		free_game(game);
 		exit (0);
 	}
 }
 
-void	check_borders(t_map *map)
+void	check_borders(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	if (is_not_char(map->map[0], '1') == -1)
-		map->error = 4;
-	if (!(ft_strlen(map->map[map->height - 1])))
+	if (is_not_char(game->map->map[0], '1') == -1)
+		game->error = 4;
+	if (!(ft_strlen(game->map->map[game->map->height - 1])))
 	{
-		if (is_not_char(map->map[map->height - 2], '1') == -1)
-			map->error = 4;
+		if (is_not_char(game->map->map[game->map->height - 2], '1') == -1)
+			game->error = 4;
 	}
 	else
-		if (is_not_char(map->map[map->height - 1], '1') == -1)
-			map->error = 4;
-	while (i < map->height)
+		if (is_not_char(game->map->map[game->map->height - 1], '1') == -1)
+			game->error = 4;
+	while (i < game->map->height)
 	{
-		if (map->map[i][0] != '1' || map->map[i][map->width - 1] != '1')
-			map->error = 4;
+		if (game->map->map[i][0] != '1' ||
+			game->map->map[i][game->map->width - 1] != '1')
+			game->error = 4;
 		i++;
 	}
-	if (map->error == 4)
+	if (game->error == 4)
 	{
-		free (map->map);
-		free (map);
-		exit(printf("Error\nMap not surrounded by walls\n"));
+		free_error(game, "Error\nMap not surrounded by walls\n");
 	}
 }
 
-void	check_entries(t_map *map)
+void	check_entries(t_game *game)
 {
-	if (map->cltb < 1)
-		map->error = 3;
-	if (map->exit < 1)
-		map->error = 3;
-	if (map->ppos != 1)
-		map->error = 3;
+	if (game->map->cltb < 1)
+		game->error = 3;
+	if (game->map->exit < 1)
+		game->error = 3;
+	if (game->map->ppos != 1)
+		game->error = 3;
 }
 
-void	valid_entries(char c, t_map *map)
+void	valid_entries(char c, t_game *game)
 {
 	if (c == 'C')
-		map->cltb++;
+		game->map->cltb++;
 	if (c == 'P')
-		map->ppos++;
+		game->map->ppos++;
 	if (c == 'E')
-		map->exit++;
+		game->map->exit++;
 }
 
-void	valid_line(char	*line, t_map *map)
+void	valid_line(char	*line, t_game *game)
 {
 	int	i;
 
@@ -86,9 +84,9 @@ void	valid_line(char	*line, t_map *map)
 	while (i < ft_strlen(line))
 	{
 		if (is_charset(line[i], MAPCHAR) == 0)
-			map->error = 2;
+			game->error = 2;
 		else
-			valid_entries(line[i], map);
+			valid_entries(line[i], game);
 		i++;
 	}
 }
