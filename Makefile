@@ -10,7 +10,7 @@ CFLAGS		=	-Werror -Wextra -Wall
 
 SANFLAGS	=	-g -fsanitize=address
 
-LIX_LIB		=	-lm -lX11 -lXext -lz
+LIX_LIB		=	-L -lm -lX11 -lXext -lz
 
 MAC_LIB		=	-lm -lmlx -framework OpenGL -framework AppKit
 
