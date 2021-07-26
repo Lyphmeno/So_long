@@ -6,7 +6,7 @@
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 19:03:53 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/25 18:27:00 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:45:48 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	get_real_size(t_game *game)
 	tmph = 0;
 	tmpw = 0;
 	mlx_get_screen_size(game->mlx->mlx, &tmpw, &tmph);
-	printf("screen size = [%d,%d]\n", tmph, tmpw);
 	game->wind->height = game->map->height * 64;
 	game->wind->width = game->map->width * 64;
 	while (game->wind->height > tmph || game->wind->width > tmpw)
@@ -36,10 +35,24 @@ void	get_real_size(t_game *game)
 	}
 }
 
-int	handle_key(int key, t_game *game)
+void	render_player(t_game *game)
 {
-	printf("%d\n", key);
-	if (key == 65307)
-		exit_game(game);
-	return (0);
+	double	i;
+	double	j;
+
+	i = 0;
+	j = 0;
+	while (i < (double)1 / game->map->height * game->wind->height)
+	{
+		while (j < (double)1 / game->map->width * game->wind->width)
+		{
+			put_pixel(game->img, (double)game->player->x / game->map->width
+				* game->wind->width + j, (double)game->player->y
+				/ game->map->height * game->wind->height + i,
+				get_texture(game, game->texture->player, i, j));
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }

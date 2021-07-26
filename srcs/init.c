@@ -6,7 +6,7 @@
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 21:27:03 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/25 18:23:39 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/26 13:25:07 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_player(char **map, t_player *player)
 			{
 				player->x = j;
 				player->y = i;
+				map[i][j] = '0';
 			}
 			j++;
 		}

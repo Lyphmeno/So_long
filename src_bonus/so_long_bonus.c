@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 14:38:01 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/26 14:39:25 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:56:59 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 int	image_loop(t_game *game)
 {
+	char	*tmp;
+
 	game->img->img = mlx_new_image(game->mlx->mlx,
 			game->wind->width, game->wind->height);
 	game->img->addr = mlx_get_data_addr(game->img->img,
 			&game->img->bpp, &game->img->llength, &game->img->endian);
 	render(game);
+	tmp = ft_itoa(game->count);
 	mlx_put_image_to_window(game->mlx->mlx,
 		game->mlx->window, game->img->img, 0, 0);
+	mlx_string_put(game->mlx->mlx, game->mlx->window, 20, 20, 0, tmp);
+	free(tmp);
 	mlx_destroy_image(game->mlx->mlx, game->img->img);
 	return (0);
 }

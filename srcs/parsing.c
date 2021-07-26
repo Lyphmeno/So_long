@@ -6,7 +6,7 @@
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 20:01:33 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/24 22:39:42 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:18:48 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,10 @@ int	get_size(char *argmap, t_game *game)
 
 int	parsing(char *argmap, t_game *game)
 {
-	int	i;
-
-	i = 0;
 	get_size(argmap, game);
 	check_entries(game);
 	check_errors(game);
 	copy_map(argmap, game);
 	check_borders(game);
-	printf("Height x Width = %d x %d\n", game->map->height, game->map->width);
-	printf("Exit = %d\n", game->map->exit);
-	printf("Collectibles = %d\n", game->map->cltb);
-	printf("Ppos = %d\n", game->map->ppos);
-	while (i < game->map->height)
-	{
-		printf("map[%d] : |%s|\n", i, game->map->map[i]);
-		i++;
-	}
 	return (0);
 }

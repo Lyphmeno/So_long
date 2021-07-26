@@ -6,7 +6,7 @@
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 13:21:17 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/25 18:21:08 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:33:36 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 # include "get_next_line.h"
 # include "minilibx-linux/mlx.h"
 # define MAPCHAR "10CPE"
-# define UP 119
+//# define UP 119
+# define UP 122
 # define DOWN 115
-# define LEFT 97
+//# define LEFT 97
+# define LEFT 113
 # define RIGHT 100
 
 typedef struct s_mlx
@@ -61,6 +63,7 @@ typedef struct s_player
 {
 	int			x;
 	int			y;
+	int			cltb;
 }				t_player;
 
 typedef struct s_texture
@@ -74,6 +77,7 @@ typedef struct s_texture
 
 typedef struct s_game
 {
+	int			count;
 	int			error;
 	int			nl;
 	int			fd;
@@ -106,5 +110,13 @@ void	init_texture(t_game *game);
 void	get_real_size(t_game *game);
 int		exit_game(t_game *game);
 int		handle_key(int key, t_game *game);
+void	render(t_game *game);
+void	put_pixel(t_data *img, int x, int y, int color);
+int		get_texture(t_game *game, t_data *img, int x, int y);
+void	render_fw(t_game *game, int x, int y);
+void	render_ec(t_game *game, int x, int y);
+void	render_player(t_game *game);
+void	player_move_ud(int key, t_game *game);
+void	player_move_lr(int key, t_game *game);
 
 #endif

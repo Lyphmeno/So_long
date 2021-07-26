@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 12:48:52 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/22 18:33:52 by lyphmeno         ###   ########.fr       */
+/*   Created: 2021/07/26 14:01:15 by lyphmeno          #+#    #+#             */
+/*   Updated: 2021/07/26 14:57:17 by lyphmeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib/libft/libft.h"
+#include "../lib/so_longlib.h"
 
 static size_t	ft_strlen_nl(char *s)
 {
