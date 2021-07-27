@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_longlib.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 13:21:17 by lyphmeno          #+#    #+#             */
-/*   Updated: 2021/07/26 15:33:36 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:59:10 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include "get_next_line.h"
 # include "minilibx-linux/mlx.h"
 # define MAPCHAR "10CPE"
-//# define UP 119
-# define UP 122
+# define UP 119
+//# define UP 122
 # define DOWN 115
-//# define LEFT 97
-# define LEFT 113
+# define LEFT 97
+//# define LEFT 113
 # define RIGHT 100
 
 typedef struct s_mlx

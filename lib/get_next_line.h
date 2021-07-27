@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyphmeno <lyphmeno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 12:33:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/06/10 11:36:00 by lyphmeno         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:57:21 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 # include "libft/libft.h"
 # include <limits.h>
-
 
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);
