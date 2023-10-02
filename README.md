@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>So_long : <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cljbd5ceo007308mltneinai5/project/2264467" alt="hlevi's 42 so_long Score" /></a></h1>
+  <h1>So_long :</a></h1>
   
   <h2>Project Description</h2>
   <p>
